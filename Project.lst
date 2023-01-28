@@ -1,0 +1,145 @@
+     Assembly listing for: Project.mas
+                Assembled: Thu May 06 17:08:44 EDT 2021
+
+000 5000 |  Calc   INPUT             
+001 2062 |         STORE Code        
+002 6000 |         OUTPUT            
+003 5000 |         INPUT             
+004 2060 |         STORE X           
+005 6000 |         OUTPUT            
+006 5000 |         INPUT             
+007 2061 |         STORE Y           
+008 6000 |         OUTPUT            
+009 1060 |         LOAD X            
+00A 8800 |         SKIPCOND 800      
+00B 905D |         JUMP Error        
+00C 1061 |         LOAD Y            
+00D 8800 |         SKIPCOND 800      
+00E 905D |         JUMP Error        
+00F 106A |         LOAD Nine         
+010 4060 |         SUBT X            
+011 3067 |         ADD One           
+012 8800 |         SKIPCOND 800      
+013 905D |         JUMP Error        
+014 106A |         LOAD Nine         
+015 4061 |         SUBT Y            
+016 3067 |         ADD One           
+017 8800 |         SKIPCOND 800      
+018 905D |         JUMP Error        
+019 1062 |         LOAD Code         
+01A 4066 |         SUBT Ten          
+01B 3067 |         ADD One           
+01C 8800 |         SKIPCOND 800     /AC>0 10->1 11->2 12->3 13->4
+01D 905D |         JUMP Error        
+01E 4067 |         SUBT One          
+01F 8800 |         SKIPCOND 800     /AC>0
+020 9031 |         JUMP Add          
+021 4067 |         SUBT One          
+022 8800 |         SKIPCOND 800     /AC>0
+023 902B |         JUMP Sub          
+024 4067 |         SUBT One          
+025 8800 |         SKIPCOND 800     /AC>0
+026 9037 |         JUMP Mul          
+027 4067 |         SUBT One          
+028 8800 |         SKIPCOND 800     /AC>0
+029 9048 |         JUMP Div          
+02A 905D |         JUMP Error        
+02B 1060 |  Sub    LOAD X            
+02C 4061 |         SUBT Y            
+02D 2063 |         STORE Result      
+02E 1063 |         LOAD Result       
+02F 6000 |         OUTPUT            
+030 9000 |         JUMP Calc         
+031 1060 |  Add    LOAD X            
+032 3061 |         ADD Y             
+033 2063 |         STORE Result      
+034 1063 |         LOAD Result       
+035 6000 |         OUTPUT            
+036 9000 |         JUMP Calc         
+037 1061 |  Mul    LOAD Y            
+038 2068 |         STORE Ctr         
+039 A000 |         CLEAR             
+03A 2069 |         STORE Temp        
+03B 1069 |  Loop1  LOAD Temp         
+03C 3060 |         ADD X             
+03D 2069 |         STORE Temp        
+03E 1068 |         LOAD Ctr          
+03F 4067 |         SUBT One          
+040 2068 |         STORE Ctr         
+041 8400 |         SKIPCOND 400      
+042 903B |         JUMP Loop1        
+043 1069 |         LOAD Temp         
+044 2063 |         STORE Result      
+045 1063 |         LOAD Result       
+046 6000 |         OUTPUT            
+047 9000 |         JUMP Calc         
+048 A000 |  Div    CLEAR             
+049 2063 |         STORE Result      
+04A A000 |         CLEAR             
+04B 2064 |         STORE Remain      
+04C 1060 |  Loop2  LOAD X            
+04D 4061 |         SUBT Y            
+04E 8000 |         SKIPCOND 000      
+04F 9051 |         JUMP Divd         
+050 9056 |         JUMP Rem          
+051 2060 |  Divd   STORE X           
+052 1063 |         LOAD Result       
+053 3067 |         ADD One           
+054 2063 |         STORE Result      
+055 904C |         JUMP Loop2        
+056 1060 |  Rem    LOAD X            
+057 2064 |         STORE Remain      
+058 1063 |         LOAD Result       
+059 6000 |         OUTPUT            
+05A 1064 |         LOAD Remain       
+05B 6000 |         OUTPUT            
+05C 9000 |         JUMP Calc         
+05D 1065 |  Error  LOAD Errors       
+05E 6000 |         OUTPUT            
+05F 9000 |         JUMP Calc         
+060 0000 |  X      DEC 0             
+061 0000 |  Y      DEC 0             
+062 0000 |  Code   DEC 0             
+063 0000 |  Result DEC 0             
+064 0000 |  Remain DEC 0             
+065 0064 |  Errors DEC 100           
+066 000A |  Ten    DEC 10            
+067 0001 |  One    DEC 1             
+068 0000 |  Ctr    DEC 0             
+069 0000 |  Temp   DEC 0             
+06A 0009 |  Nine   DEC 9             
+
+Assembly successful.
+
+         SYMBOL TABLE
+         --------------------------------------------------
+          Symbol | Defined | References 
+         --------+---------+-------------------------------
+          Add    |   031   | 020
+          Calc   |   000   | 030, 036, 047, 05C, 05F
+          Code   |   062   | 001, 019
+          Ctr    |   068   | 038, 03E, 040
+          Div    |   048   | 029
+          Divd   |   051   | 04F
+          Error  |   05D   | 00B, 00E, 013, 018, 01D, 02A
+          Errors |   065   | 05D
+          Loop1  |   03B   | 042
+          Loop2  |   04C   | 055
+          Mul    |   037   | 026
+          Nine   |   06A   | 00F, 014
+          One    |   067   | 011, 016, 01B, 01E, 021, 024, 
+                 |         | 027, 03F, 053
+          Rem    |   056   | 050
+          Remain |   064   | 04B, 057, 05A
+          Result |   063   | 02D, 02E, 033, 034, 044, 045, 
+                 |         | 049, 052, 054, 058
+          Sub    |   02B   | 023
+          Temp   |   069   | 03A, 03B, 03D, 043
+          Ten    |   066   | 01A
+          X      |   060   | 004, 009, 010, 02B, 031, 03C, 
+                 |         | 04C, 051, 056
+          Y      |   061   | 007, 00C, 015, 02C, 032, 037, 
+                 |         | 04D
+         --------------------------------------------------
+
+

@@ -1,0 +1,16 @@
+	Load		Count	/Load Number of loops
+	Store		Ctr	/Store in Control Variable
+Loop,	Load		Sum	/Load the Sum (Sum = X * count)
+	Add		X	/Add X
+	Store		Sum	/Store Sum
+	Load 		Ctr	/Load Control 
+	Subt		One	/decrement
+	Store		Ctr	/Store new ctr
+	Skipcond	400	/If Ctr = 0 end Loop
+	Jump		Loop	/Loop
+	Halt			/Terminate
+One,	Dec		1	/To increment or decrement by 1
+Sum,	Dec		0	/Stores the sum
+X,	Dec		3	/Value to be summed
+Count,	Dec		10	/Number or sumations
+Ctr,	Dec		0	/Control Variable

@@ -1,0 +1,25 @@
+ -----------------
+ Symbol | Location
+ -------+---------
+ Add    |   031
+ Calc   |   000
+ Code   |   062
+ Ctr    |   068
+ Div    |   048
+ Divd   |   051
+ Error  |   05D
+ Errors |   065
+ Loop1  |   03B
+ Loop2  |   04C
+ Mul    |   037
+ Nine   |   06A
+ One    |   067
+ Rem    |   056
+ Remain |   064
+ Result |   063
+ Sub    |   02B
+ Temp   |   069
+ Ten    |   066
+ X      |   060
+ Y      |   061
+

@@ -1,0 +1,38 @@
+     Assembly listing for: HW_7_1.mas
+                Assembled: Mon Apr 19 18:59:23 EDT 2021
+
+000 1010 |  If     LOAD X           /Load the first value
+001 4011 |         SUBT Y           /Subtract Y, AC has result
+002 8800 |         SKIPCOND 800     /Skip is AC>0 i.e. X > Y
+003 900A |         JUMP Else        /Jump to else part if AC<0
+004 1010 |  Then   LOAD X           /Reload X
+005 3011 |         ADD Y            /Add Y to X result is in AC
+006 2010 |         STORE X          /Store AC in X
+007 A000 |         CLEAR            /Load 0
+008 2011 |         STORE Y          /Store AC in Y
+009 900F |         JUMP Endif       /Skip over the else part
+00A 1011 |  Else   LOAD Y           /Load Y
+00B 3010 |         ADD X            /Add X to Y result is in AC
+00C 2011 |         STORE Y          /Store AC to Y
+00D A000 |         CLEAR            /Load 0
+00E 2010 |         STORE X          /Store AC in X
+00F 7000 |  Endif  HALT             /Terminate Program at Endif
+010 0001 |  X      DEC 1            /something
+011 0002 |  Y      DEC 2            /something
+         |         END               
+
+Assembly successful.
+
+         SYMBOL TABLE
+         --------------------------------------------------
+          Symbol | Defined | References 
+         --------+---------+-------------------------------
+          Else   |   00A   | 003
+          Endif  |   00F   | 009
+          If     |   000   | 
+          Then   |   004   | 
+          X      |   010   | 000, 004, 006, 00B, 00E
+          Y      |   011   | 001, 005, 008, 00A, 00C
+         --------------------------------------------------
+
+

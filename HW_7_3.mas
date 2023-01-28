@@ -1,0 +1,29 @@
+	Load		X	/Load X into AC
+	Subt		Y	/Subtract Y
+If,	Skipcond	000	/AC<0 (If X<Y then.. else)
+	Jump		Else	/If X!<Y jump else
+Then,	Load		Y	/Load Y into AC
+	Subt		X	/Subtract X
+	Store		Z	/Store Y - X to Z
+	Load		N	/Load number of loops
+	Subt		One	/Subtract One
+	Store		Ctr	/Store as Control for loop
+Loop,	Load		Sum	/Load Sum (Sum = 4 * Z)
+	Add		Z	/add Z
+	Store		Sum	/Store AC as Sum
+	Load		Ctr	/Load Control for loop
+	Subt		One	/Deincrement by one
+	Store		Ctr	/Store as new control value
+	Skipcond	000	/if Ctr<0 skip (has iterated N times)
+	Jump		Loop	/If it has not iterated N times do it again
+	Jump		Endif	/Skip Else 
+Else,	Load		X	/Else load X
+	Store		Sum	/Store X as Sum
+Endif,	Halt			/Terminate
+One,	Dec		1	/For incrementing or deincrementing
+Sum,	Dec		0	/Sum
+N,	Dec		4	/number of loops
+Ctr,	Dec		0	/The loop control variable
+X,	Dec		1	/Value for Function
+Y,	Dec		2	/Value for function
+Z,	Dec		0	/Used to store difference 

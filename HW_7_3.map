@@ -1,0 +1,16 @@
+ -----------------
+ Symbol | Location
+ -------+---------
+ Ctr    |   019
+ Else   |   013
+ Endif  |   015
+ If     |   002
+ Loop   |   00A
+ N      |   018
+ One    |   016
+ Sum    |   017
+ Then   |   004
+ X      |   01A
+ Y      |   01B
+ Z      |   01C
+

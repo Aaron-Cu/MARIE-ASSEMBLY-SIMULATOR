@@ -1,0 +1,35 @@
+     Assembly listing for: HW_7_2.mas
+                Assembled: Mon Apr 19 21:59:31 EDT 2021
+
+000 100E |         LOAD Count       /Load Number of loops
+001 200F |         STORE Ctr        /Store in Control Variable
+002 100C |  Loop   LOAD Sum         /Load the Sum (Sum = X * count)
+003 300D |         ADD X            /Add X
+004 200C |         STORE Sum        /Store Sum
+005 100F |         LOAD Ctr         /Load Control 
+006 400B |         SUBT One         /decrement
+007 200F |         STORE Ctr        /Store new ctr
+008 8400 |         SKIPCOND 400     /If Ctr = 0 end Loop
+009 9002 |         JUMP Loop        /Loop
+00A 7000 |         HALT             /Terminate
+00B 0001 |  One    DEC 1            /To increment or decrement by 1
+00C 0000 |  Sum    DEC 0            /Stores the sum
+00D 0003 |  X      DEC 3            /Value to be summed
+00E 000A |  Count  DEC 10           /Number or sumations
+00F 0000 |  Ctr    DEC 0            /Control Variable
+
+Assembly successful.
+
+         SYMBOL TABLE
+         --------------------------------------------------
+          Symbol | Defined | References 
+         --------+---------+-------------------------------
+          Count  |   00E   | 000
+          Ctr    |   00F   | 001, 005, 007
+          Loop   |   002   | 009
+          One    |   00B   | 006
+          Sum    |   00C   | 002, 004
+          X      |   00D   | 003
+         --------------------------------------------------
+
+

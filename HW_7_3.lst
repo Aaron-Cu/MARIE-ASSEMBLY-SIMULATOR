@@ -1,0 +1,54 @@
+     Assembly listing for: HW_7_3.mas
+                Assembled: Mon Apr 19 21:49:13 EDT 2021
+
+000 101A |         LOAD X           /Load X into AC
+001 401B |         SUBT Y           /Subtract Y
+002 8000 |  If     SKIPCOND 000     /AC<0 (If X<Y then.. else)
+003 9013 |         JUMP Else        /If X!<Y jump else
+004 101B |  Then   LOAD Y           /Load Y into AC
+005 401A |         SUBT X           /Subtract X
+006 201C |         STORE Z          /Store Y - X to Z
+007 1018 |         LOAD N           /Load number of loops
+008 4016 |         SUBT One         /Subtract One
+009 2019 |         STORE Ctr        /Store as Control for loop
+00A 1017 |  Loop   LOAD Sum         /Load Sum (Sum = 4 * Z)
+00B 301C |         ADD Z            /add Z
+00C 2017 |         STORE Sum        /Store AC as Sum
+00D 1019 |         LOAD Ctr         /Load Control for loop
+00E 4016 |         SUBT One         /Deincrement by one
+00F 2019 |         STORE Ctr        /Store as new control value
+010 8000 |         SKIPCOND 000     /if Ctr<0 skip (has iterated N times)
+011 900A |         JUMP Loop        /If it has not iterated N times do it again
+012 9015 |         JUMP Endif       /Skip Else 
+013 101A |  Else   LOAD X           /Else load X
+014 2017 |         STORE Sum        /Store X as Sum
+015 7000 |  Endif  HALT             /Terminate
+016 0001 |  One    DEC 1            /For incrementing or deincrementing
+017 0000 |  Sum    DEC 0            /Sum
+018 0004 |  N      DEC 4            /number of loops
+019 0000 |  Ctr    DEC 0            /The loop control variable
+01A 0001 |  X      DEC 1            /Value for Function
+01B 0002 |  Y      DEC 2            /Value for function
+01C 0000 |  Z      DEC 0            /Used to store difference 
+
+Assembly successful.
+
+         SYMBOL TABLE
+         --------------------------------------------------
+          Symbol | Defined | References 
+         --------+---------+-------------------------------
+          Ctr    |   019   | 009, 00D, 00F
+          Else   |   013   | 003
+          Endif  |   015   | 012
+          If     |   002   | 
+          Loop   |   00A   | 011
+          N      |   018   | 007
+          One    |   016   | 008, 00E
+          Sum    |   017   | 00A, 00C, 014
+          Then   |   004   | 
+          X      |   01A   | 000, 005, 013
+          Y      |   01B   | 001, 004
+          Z      |   01C   | 006, 00B
+         --------------------------------------------------
+
+

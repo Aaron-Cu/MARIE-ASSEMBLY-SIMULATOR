@@ -1,0 +1,107 @@
+Calc,	Input
+	Store		Code
+	Output
+	Input
+	Store		X
+	Output
+	Input
+	Store		Y
+	Output
+	Load		X
+	Skipcond	800
+	Jump		Error
+	Load		Y
+	Skipcond	800
+	Jump		Error
+	Load		Nine
+	Subt		X
+	Add		One
+	Skipcond	800
+	Jump		Error
+	Load		Nine
+	Subt		Y
+	Add		One
+	Skipcond	800
+	Jump		Error
+	Load		Code
+	Subt		Ten
+	Add		One
+	Skipcond	800	/AC>0 10->1 11->2 12->3 13->4
+	Jump		Error
+	Subt		One
+	Skipcond	800	/AC>0
+	Jump		Add
+	Subt		One
+	Skipcond	800	/AC>0
+	Jump		Sub
+	Subt		One
+	Skipcond	800	/AC>0
+	Jump		Mul
+	Subt		One
+	Skipcond	800	/AC>0
+	Jump		Div
+	Jump		Error
+Sub,	Load		X
+	Subt		Y
+	Store		Result
+	Load		Result
+	Output
+	Jump		Calc
+Add,	Load		X
+	Add		Y
+	Store		Result
+	Load		Result
+	Output
+	Jump		Calc
+Mul,	Load		Y
+	Store		Ctr
+	Clear
+	Store		Temp
+Loop1,	Load		Temp
+	Add		X
+	Store		Temp
+	Load 		Ctr
+	Subt		One
+	Store		Ctr
+	Skipcond	400
+	Jump		Loop1
+	Load		Temp
+	Store		Result
+	Load		Result
+	Output
+	Jump		Calc
+Div,	Clear		
+	Store		Result
+	Clear
+	Store		Remain
+Loop2,	Load		X
+	Subt		Y
+	Skipcond	000
+	Jump		Divd
+	Jump		Rem
+Divd,	Store		X
+	Load		Result
+	Add		One
+	Store		Result
+	Jump		Loop2
+Rem,	Load		X
+	Store		Remain
+	Load		Result
+	Output
+	Load		Remain
+	Output
+	Jump		Calc
+Error,	Load		Errors
+	Output
+	Jump		Calc
+X,	Dec		0
+Y,	Dec		0
+Code,	Dec		0
+Result,	Dec		0
+Remain,	Dec		0
+Errors,	Dec		100
+Ten,	Dec		10
+One,	Dec		1
+Ctr,	Dec		0
+Temp,	Dec		0
+Nine,	Dec		9

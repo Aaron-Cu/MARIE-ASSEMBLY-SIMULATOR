@@ -1,0 +1,19 @@
+If,    	Load	 X     /Load the first value
+	Subt	 Y     /Subtract Y, AC has result
+  	Skipcond 800   /Skip is AC>0 i.e. X > Y
+  	Jump     Else  /Jump to else part if AC<0
+Then,  	Load     X     /Reload X
+  	Add      Y     /Add Y to X result is in AC
+  	Store    X     /Store AC in X
+  	Clear          /Load 0
+  	Store    Y     /Store AC in Y
+  	Jump     Endif /Skip over the else part
+Else,  	Load     Y     /Load Y
+	Add      X     /Add X to Y result is in AC
+       	Store    Y     /Store AC to Y
+	Clear          /Load 0
+	Store    X     /Store AC in X
+Endif, 	Halt           /Terminate Program at Endif
+X,     	Dec      1     /something
+Y,     	Dec      2     /something
+       	END
